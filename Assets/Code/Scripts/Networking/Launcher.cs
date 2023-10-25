@@ -28,6 +28,13 @@ namespace ARMG.Networking
         /// </summary>
         readonly string m_gameVersion = "1";
 
+        /// <summary>
+        /// Keep track of the current process. Since connection is asynchronous and is based on several callbacks from Photon,
+        /// we need to keep track of this to properly adjust the behavior when we receive call back by Photon.
+        /// Typically this is used for the OnConnectedToMaster() callback.
+        /// </summary>
+        bool m_isConnecting;
+
         #endregion
 
         #region MonoBehaviour CallBacks
@@ -61,7 +68,7 @@ namespace ARMG.Networking
             }
             else
             {
-                PhotonNetwork.ConnectUsingSettings();
+                m_isConnecting = PhotonNetwork.ConnectUsingSettings();
                 PhotonNetwork.GameVersion = m_gameVersion;
             }
         }
@@ -71,8 +78,11 @@ namespace ARMG.Networking
         #region MonoBehaviourPunCallbacks Callbacks
         public override void OnConnectedToMaster()
         {
-            Debug.Log("[Client]: Connected to Master Server");
-            PhotonNetwork.JoinRandomRoom();
+            if (m_isConnecting)
+            {
+                PhotonNetwork.JoinRandomRoom();
+                m_isConnecting = false;
+            }
         }
 
         public override void OnDisconnected(DisconnectCause cause)
@@ -80,6 +90,7 @@ namespace ARMG.Networking
             m_progressLabel.SetActive(false);
             m_controlPanel.SetActive(true);
 
+            m_isConnecting = false;
             Debug.LogWarningFormat("[Client]: Disconnected with reason {0}", cause);
         }
 
@@ -94,6 +105,7 @@ namespace ARMG.Networking
         public override void OnJoinedRoom()
         {
             Debug.Log("[Client]: Successfully joined room.");
+            PhotonNetwork.LoadLevel("Room for 1");
         }
 
         #endregion
