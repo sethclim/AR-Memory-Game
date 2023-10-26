@@ -1,6 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using ARMG;
 
 namespace ARMG.Networking
 {
@@ -37,13 +38,12 @@ namespace ARMG.Networking
 
         #endregion
 
-        #region MonoBehaviour CallBacks
+        #region MonoBehaviour Callbacks
 
         void Awake()
         {
             // #Critical
             // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
-            PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.AutomaticallySyncScene = true;
         }
 

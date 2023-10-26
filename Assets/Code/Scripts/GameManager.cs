@@ -1,20 +1,70 @@
 using Photon.Pun;
-using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ARMG.Player;
 
 namespace ARMG
 {
     public class GameManager : MonoBehaviourPunCallbacks
     {
+        #region Private Serialized Fields
+
+        [SerializeField] GameObject m_playerPrefab;
+
+        #endregion
+
+        #region MonoBehaviour CallBacks
+
+        void Start()
+        {
+            // In case we started with the wrong scene being active, simply load the menu scene
+            if (!PhotonNetwork.IsConnected)
+            {
+                SceneManager.LoadScene(0);
+                return;
+            }
+
+            if (m_playerPrefab == null)
+            {
+                Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
+                return;
+            }
+
+            if (PhotonNetwork.InRoom && PlayerManager.LocalPlayerInstance == null)
+            {
+                Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
+                // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+                PhotonNetwork.Instantiate(m_playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+            }
+            else
+            {
+                Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
+            }
+        }
+
+        #endregion
+
         #region Photon Callbacks
+
+        public override void OnJoinedRoom()
+        {
+            // Note: it is possible that this monobehaviour is not created (or active) when OnJoinedRoom happens
+            // due to that the Start() method also checks if the local player character was network instantiated!
+            if (PlayerManager.LocalPlayerInstance == null)
+            {
+                Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
+
+                // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+                PhotonNetwork.Instantiate(m_playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+            }
+        }
 
         public override void OnLeftRoom()
         {
             SceneManager.LoadScene(0);
         }
 
-        public override void OnPlayerEnteredRoom(Player other)
+        public override void OnPlayerEnteredRoom(Photon.Realtime.Player other)
         {
             Debug.LogFormat("OnPlayerEnteredRoom() {0}", other.NickName); // not seen if you're the player connecting
 
@@ -26,7 +76,7 @@ namespace ARMG
             }
         }
 
-        public override void OnPlayerLeftRoom(Player other)
+        public override void OnPlayerLeftRoom(Photon.Realtime.Player other)
         {
             Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName); // seen when other disconnects
 
