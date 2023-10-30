@@ -179,7 +179,7 @@ MonoBehaviour:
   _offColor: {r: 1, g: 1, b: 1, a: 0}
   _light: {fileID: 1580694915235644066}
   offIntensity: 1
-  onIntensity: 3
+  onIntensity: 2
   _materialOff: {fileID: -6768418768226061997, guid: a73dd6abbbd75c248997c159cc5b8f32, type: 3}
   _materialOn: {fileID: 2100000, guid: baaf99533e887da49acee109de8cff73, type: 2}
 --- !u!4 &3433397619521930729 stripped
