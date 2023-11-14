@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4670983917479464524}
   m_Layer: 0
-  m_Name: ButtonRow
+  m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,11 +45,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3954299596219445671, guid: 499a8a549472d984fb76aa110c0de702, type: 3}
       propertyPath: m_Name
-      value: PressableButton_Custom_Cube (3)
+      value: Button 4
       objectReference: {fileID: 0}
     - target: {fileID: 3954299596219445675, guid: 499a8a549472d984fb76aa110c0de702, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.014999982
+      value: 0.225
       objectReference: {fileID: 0}
     - target: {fileID: 3954299596219445675, guid: 499a8a549472d984fb76aa110c0de702, type: 3}
       propertyPath: m_LocalPosition.y
@@ -107,11 +107,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3954299596219445671, guid: 499a8a549472d984fb76aa110c0de702, type: 3}
       propertyPath: m_Name
-      value: PressableButton_Custom_Cube (1)
+      value: Button 2
       objectReference: {fileID: 0}
     - target: {fileID: 3954299596219445675, guid: 499a8a549472d984fb76aa110c0de702, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.253
+      value: -0.075
       objectReference: {fileID: 0}
     - target: {fileID: 3954299596219445675, guid: 499a8a549472d984fb76aa110c0de702, type: 3}
       propertyPath: m_LocalPosition.y
@@ -169,11 +169,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3954299596219445671, guid: 499a8a549472d984fb76aa110c0de702, type: 3}
       propertyPath: m_Name
-      value: PressableButton_Custom_Cube (2)
+      value: Button 3
       objectReference: {fileID: 0}
     - target: {fileID: 3954299596219445675, guid: 499a8a549472d984fb76aa110c0de702, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.13399997
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 3954299596219445675, guid: 499a8a549472d984fb76aa110c0de702, type: 3}
       propertyPath: m_LocalPosition.y
@@ -231,11 +231,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3954299596219445671, guid: 499a8a549472d984fb76aa110c0de702, type: 3}
       propertyPath: m_Name
-      value: PressableButton_Custom_Cube
+      value: Button 1
       objectReference: {fileID: 0}
     - target: {fileID: 3954299596219445675, guid: 499a8a549472d984fb76aa110c0de702, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.378
+      value: -0.225
       objectReference: {fileID: 0}
     - target: {fileID: 3954299596219445675, guid: 499a8a549472d984fb76aa110c0de702, type: 3}
       propertyPath: m_LocalPosition.y

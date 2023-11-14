@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1963561307345040800, guid: 05b6a9dff71e6224982f4d56166f710f, type: 3}
       propertyPath: m_Name
-      value: PressableButton_Custom_Cube Variant
+      value: Button
       objectReference: {fileID: 0}
     - target: {fileID: 1963561307345040812, guid: 05b6a9dff71e6224982f4d56166f710f, type: 3}
       propertyPath: m_LocalScale.x
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1963561307345040812, guid: 05b6a9dff71e6224982f4d56166f710f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.395
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1963561307345040812, guid: 05b6a9dff71e6224982f4d56166f710f, type: 3}
       propertyPath: m_LocalPosition.y
