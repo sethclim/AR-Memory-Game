@@ -2,6 +2,11 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using ARMG.Player;
+using System;
+using Unity.VisualScripting;
+using System.Collections.Generic;
+using static UnityEngine.GraphicsBuffer;
+using UnityEditor;
 
 namespace ARMG
 {
@@ -97,6 +102,13 @@ namespace ARMG
             PhotonNetwork.LeaveRoom();
         }
 
+        public void StartGame()
+        {
+            GeneratePattern();
+        }
+
+
+
         #endregion
 
         #region Private Methods
@@ -112,6 +124,35 @@ namespace ARMG
             PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
         }
 
+        void GeneratePattern()
+        {
+            List<int> pattern = new();
+            for (int i = 0; i < 4; i++)
+            {
+                int randomNumber = UnityEngine.Random.Range(0, 1);
+                pattern.Add(randomNumber);
+            }
+
+            Debug.Log(pattern);
+        }
+
         #endregion
     }
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(GameManager))]
+    public class GameManagerEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            GameManager gm = (GameManager)target;
+            if (GUILayout.Button("Start Game"))
+            {
+                gm.StartGame();
+            }
+        }
+    }
+#endif
 }
