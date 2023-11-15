@@ -46,3 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerPrefab: {fileID: 6349313068307407199, guid: 2b1f37dc71161b5498519789f5cfd510, type: 3}
   m_stationPrefab: {fileID: 8827510924735131051, guid: c86e07b3db2818e4ba5b3582cecaecd5, type: 3}
+  m_Light1: {fileID: 0}
+  m_Light2: {fileID: 0}
+  m_Light3: {fileID: 0}
+  m_Light4: {fileID: 0}

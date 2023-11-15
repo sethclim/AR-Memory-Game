@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using System.Collections.Generic;
 using static UnityEngine.GraphicsBuffer;
 using UnityEditor;
+using System.Collections;
 
 namespace ARMG
 {
@@ -16,6 +17,20 @@ namespace ARMG
 
         [SerializeField] GameObject m_playerPrefab;
         [SerializeField] GameObject m_stationPrefab;
+
+        [SerializeField] LightController m_Light1;
+        [SerializeField] LightController m_Light2;
+        [SerializeField] LightController m_Light3;
+        [SerializeField] LightController m_Light4;
+
+        #endregion
+
+        #region Private Fields
+
+        private IEnumerator m_playPatternRoutine;
+
+        List<LightController> m_lights = new();
+ 
 
         #endregion
 
@@ -37,6 +52,11 @@ namespace ARMG
                 // PhotonNetwork.Instantiate(m_playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
                 PhotonNetwork.Instantiate(m_stationPrefab.name, Vector3.zero, Quaternion.identity, 0);
             }
+
+            m_lights.Add(m_Light1);
+            m_lights.Add(m_Light2);
+            m_lights.Add(m_Light3);
+            m_lights.Add(m_Light4);
         }
 
         #endregion
@@ -80,10 +100,16 @@ namespace ARMG
             PhotonNetwork.LeaveRoom();
         }
 
+        List<int> pattern = new();
+
         public void StartGame()
         {
-            GeneratePattern();
+            pattern = GeneratePattern();
+
+            m_playPatternRoutine = PlayPattern(0.5f);
+            StartCoroutine(m_playPatternRoutine);
         }
+
 
 
 
@@ -102,18 +128,42 @@ namespace ARMG
             PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
         }
 
-        void GeneratePattern()
+        List<int> GeneratePattern()
         {
             List<int> pattern = new();
             for (int i = 0; i < 4; i++)
             {
-                int randomNumber = UnityEngine.Random.Range(0, 1);
+                int randomNumber = UnityEngine.Random.Range(0, 2);
                 pattern.Add(randomNumber);
             }
 
-            Debug.Log(pattern);
+            foreach (var x in pattern)
+            {
+                Debug.Log(x.ToString());
+            }
+
+            return pattern;
         }
 
+        private IEnumerator PlayPattern(float waitTime)
+        {
+            int index = 0;
+            while (true)
+            {
+                m_lights[index].SwitchLight(pattern[index] == 1);
+                yield return new WaitForSeconds(waitTime);
+                m_lights[index].SwitchLight(false);
+
+                print("WaitAndPrint " + Time.time);
+
+                if(index == m_lights.Count -1)
+                {
+                    yield break;
+                }
+
+                index++;
+            }
+        }
         #endregion
     }
 
