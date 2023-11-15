@@ -94,7 +94,7 @@ namespace ARMG
         {
             Debug.Log("Next Round");
             GameTableController.instance.GeneratePattern();
-            GameTableController.instance.PlayPattern();
+            GameTableController.instance.TriggerPlayPattern();
         }
 
         #endregion

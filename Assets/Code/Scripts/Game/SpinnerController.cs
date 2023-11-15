@@ -33,8 +33,6 @@ public class SpinnerController : MonoBehaviour
             transform.eulerAngles.z);
 
             yield return null;
-
-
         }
     }
 
