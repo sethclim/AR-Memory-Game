@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 namespace ARMG
@@ -19,7 +20,7 @@ namespace ARMG
         public float InitialPatternInterval { get; } = 1.0f; // Seconds
         public float PatternInterval { get; set; } // Seconds
         public bool[] IsPlayerEliminated { get; set; }
-        public int PlayerCount { get; } = 1; // TODO: Update this via network
+        [Range(1, 4)] public int PlayerCount = 1; // TODO: Update this via network
 
         GameTableController m_gtc;
 
@@ -33,6 +34,19 @@ namespace ARMG
             States[GameState.GameOver] = new GameOverState(GameState.GameOver, this);
 
             CurrentState = States[GameState.ReadyUp];
+        }
+
+        public override void TransitionToState(GameState statekey)
+        {
+            photonView.RPC(nameof(RPC_TransitionState), RpcTarget.AllBuffered, statekey);
+        }
+
+        [PunRPC]
+        void RPC_TransitionState(GameState statekey)
+        {
+            CurrentState.ExitState();
+            CurrentState = States[statekey];
+            CurrentState.EnterState();
         }
     }
 }

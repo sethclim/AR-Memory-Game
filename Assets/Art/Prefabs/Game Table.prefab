@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc07fcd87314ba4eb63b8f739e2297c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCount: 1
 --- !u!114 &5412521359089287617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,6 +509,14 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3993225447555000654, guid: bb6c0feec9bd2e74482c7ff08161eae2, type: 3}
+      propertyPath: m_lightColor.b
+      value: 0.6729078
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993225447555000654, guid: bb6c0feec9bd2e74482c7ff08161eae2, type: 3}
+      propertyPath: m_lightColor.g
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4037430660240698329, guid: bb6c0feec9bd2e74482c7ff08161eae2, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -519,6 +528,14 @@ PrefabInstance:
     - target: {fileID: 4037430660240698329, guid: bb6c0feec9bd2e74482c7ff08161eae2, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169448722957492639, guid: bb6c0feec9bd2e74482c7ff08161eae2, type: 3}
+      propertyPath: m_lightColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169448722957492639, guid: bb6c0feec9bd2e74482c7ff08161eae2, type: 3}
+      propertyPath: m_lightColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4254954689736546836, guid: bb6c0feec9bd2e74482c7ff08161eae2, type: 3}
       propertyPath: m_LocalScale.x
@@ -575,6 +592,14 @@ PrefabInstance:
     - target: {fileID: 4918019549856792961, guid: bb6c0feec9bd2e74482c7ff08161eae2, type: 3}
       propertyPath: m_Name
       value: Light Bulbs
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970199889201930961, guid: bb6c0feec9bd2e74482c7ff08161eae2, type: 3}
+      propertyPath: m_lightColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970199889201930961, guid: bb6c0feec9bd2e74482c7ff08161eae2, type: 3}
+      propertyPath: m_lightColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981175461400127639, guid: bb6c0feec9bd2e74482c7ff08161eae2, type: 3}
       propertyPath: m_Color.a

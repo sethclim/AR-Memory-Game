@@ -24,6 +24,11 @@ namespace ARMG
             allTurnsCompleted = false;
             isProcessingInput = true;
 
+            for (int i = 0; i < ctx.PlayerCount; i++)
+            {
+                ctx.GTC.SendSwitchPlayerLight(i, false);
+            }
+
             currPlayerTurn = -1;
             NextPlayer();
 
@@ -73,6 +78,7 @@ namespace ARMG
                 currPatternIndex++;
                 if (currPatternIndex == ctx.SimonsPattern.Count)
                 {
+                    Debug.LogFormat("Player #{0} succeeded!", currPlayerTurn + 1);
                     // TODO: Set all lights to green
                     NextPlayer();
                 }
@@ -82,6 +88,7 @@ namespace ARMG
             // Incorrect button pressed
             else
             {
+                Debug.LogFormat("Player #{0} failed!", currPlayerTurn + 1);
                 // TODO: Set all lights to red
                 ctx.IsPlayerEliminated[playerIndex] = true;
                 NextPlayer();
@@ -107,10 +114,13 @@ namespace ARMG
             {
                 if (!ctx.IsPlayerEliminated[i])
                 {
+                    ctx.GTC.SendSwitchPlayerLight(currPlayerTurn, false);
                     currPlayerTurn = i;
                     currPatternIndex = 0;
                     foundNextPlayer = true;
                     // TODO: Rotate Lazy Susan
+                    Debug.LogFormat("Player #{0} turn!", currPlayerTurn + 1);
+                    ctx.GTC.SendSwitchPlayerLight(currPlayerTurn, true);
                     break;
                 }
             }

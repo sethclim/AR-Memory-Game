@@ -27,7 +27,7 @@ namespace ARMG
             // 1. Wait X seconds then go back to ReadyUpScreen
             // 1.1 Display winner, flash lights, etc.
 
-            return GameStateMachine.GameState.GameOver;
+            return GameStateMachine.GameState.ReadyUp;
         }
 
         public override void UpdateState()

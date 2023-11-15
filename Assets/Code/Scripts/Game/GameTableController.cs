@@ -20,9 +20,9 @@ namespace ARMG
             base.OnEnable();
             for (int i = 0; i < m_buttonControllers.Length; i++)
             {
-                int controllerIndex = i;
+                int playerIndex = i;
                 m_buttonControllers[i].OnButtonPressed.AddListener(
-                    (lightIndex) => OnButtonPressed.Invoke(controllerIndex, lightIndex));
+                    (buttonIndex) => HandleButtonPressed(playerIndex, buttonIndex));
             }
         }
 
@@ -35,6 +35,17 @@ namespace ARMG
                 // to properly remove an arrow function
                 m_buttonControllers[i].OnButtonPressed.RemoveAllListeners();
             }
+        }
+
+        void HandleButtonPressed(int playerIndex, int buttonIndex)
+        {
+            photonView.RPC(nameof(RPC_HandleButtonPressed), RpcTarget.AllBuffered, playerIndex, buttonIndex);
+        }
+
+        [PunRPC]
+        void RPC_HandleButtonPressed(int playerIndex, int buttonIndex)
+        {
+            OnButtonPressed.Invoke(playerIndex, buttonIndex);
         }
 
         public void SendSwitchPatternLight(int lightBulbIndex, bool onOff)
