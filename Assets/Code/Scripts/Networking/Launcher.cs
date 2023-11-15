@@ -45,12 +45,15 @@ namespace ARMG.Networking
             // #Critical
             // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
             PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.NickName = "Player 1";
         }
 
         void Start()
         {
             m_progressLabel.SetActive(false);
             m_controlPanel.SetActive(true);
+
+            Connect();
         }
 
         #endregion
