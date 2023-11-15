@@ -136,7 +136,11 @@ PlayerSettings:
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 11400000, guid: c677e5c4eb85b7849a8da406775c299d, type: 2}
+  - {fileID: 3452677921015152868, guid: 778c2206089b43b4f9472ab11df85ef0, type: 2}
+  - {fileID: 11400000, guid: debd83823113f6c4dae770e99ae8e9fc, type: 2}
+  - {fileID: -8930080787780988135, guid: 754c2830d33e2e048ba6bb6cc5eb374c, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -692,11 +696,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: AR-Memory-Game
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 00fe23630c37db01
   metroApplicationDescription: AR Memory Game
   wsaImages: {}
   metroTileShortName: AR Memory Game
