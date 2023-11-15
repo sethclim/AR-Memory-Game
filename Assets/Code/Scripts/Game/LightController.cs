@@ -19,25 +19,9 @@ namespace ARMG
         [SerializeField] Material _materialOff;
         [SerializeField] Material _materialOn;
 
-        bool m_isON = false;
-
-        public bool GetState() => m_isON;
-
         public void SwitchLight(bool onOff)
         {
-            SwitchLightLocally(onOff);
-            GameTableController.instance.OnLightStateChanged(this);
-        }
-
-        public void SwitchLightLocally(bool onOff)
-        {
-            m_isON = onOff;
-            UpdateLightbulb();
-        }
-
-        private void UpdateLightbulb()
-        {
-            if (m_isON)
+            if (onOff)
             {
                 _lightRenderer.material = _materialOn;
                 _light.color = _onColor;

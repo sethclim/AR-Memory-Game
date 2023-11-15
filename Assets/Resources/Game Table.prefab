@@ -278,11 +278,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5adcf49197f902d42b538e3680aa04f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_lightControllers:
+  m_patternLights:
   - {fileID: 1636737079997467533}
   - {fileID: 9056854423834642627}
   - {fileID: 4592231257167305213}
   - {fileID: 8288448478289346578}
+  m_turnLights:
   - {fileID: 3527647608027356527}
   - {fileID: 2909899564794223998}
   - {fileID: 2381196057744681474}
