@@ -8,31 +8,21 @@ namespace ARMG
 {
     public class LightController : MonoBehaviour
     {
-        [SerializeField] MeshRenderer _lightRenderer;
-        [SerializeField] Color _onColor;
-        [SerializeField] Color _offColor;
-        [SerializeField] Light _light;
+        [SerializeField] Color m_lightColor;
+        [SerializeField] MeshRenderer m_meshRenderer;
+        [SerializeField] Light m_light;
 
-        [SerializeField] float offIntensity = 1;
-        [SerializeField] float onIntensity = 5;
+        Color m_tranparentColor = new Color { r = 1.0f, g = 1.0f, b = 1.0f, a = 0.5f };
 
-        [SerializeField] Material _materialOff;
-        [SerializeField] Material _materialOn;
+        public void ToggleLight(bool onOff) => ApplyLightSettings(onOff, m_lightColor);
 
-        public void SwitchLight(bool onOff)
+        public void ToggleLight(bool onOff, Color color) => ApplyLightSettings(onOff, color);
+
+        void ApplyLightSettings(bool onOff, Color color)
         {
-            if (onOff)
-            {
-                _lightRenderer.material = _materialOn;
-                _light.color = _onColor;
-                _light.intensity = onIntensity;
-            }
-            else
-            {
-                _lightRenderer.material = _materialOff;
-                _light.color = _offColor;
-                _light.intensity = offIntensity;
-            }
+            m_meshRenderer.material.color = onOff ? color : m_tranparentColor;
+            m_light.color = color;
+            m_light.enabled = onOff;
         }
 
 #if UNITY_EDITOR
@@ -46,12 +36,12 @@ namespace ARMG
                 LightController lightCOntrollerEditor = (LightController)target;
                 if (GUILayout.Button("Switch On"))
                 {
-                    lightCOntrollerEditor.SwitchLight(true);
+                    lightCOntrollerEditor.ToggleLight(true);
                 }
 
                 if (GUILayout.Button("Switch Off"))
                 {
-                    lightCOntrollerEditor.SwitchLight(false);
+                    lightCOntrollerEditor.ToggleLight(false);
                 }
             }
         }

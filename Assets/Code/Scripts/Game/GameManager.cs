@@ -1,13 +1,7 @@
+using ARMG.Player;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using ARMG.Player;
-using System;
-using Unity.VisualScripting;
-using System.Collections.Generic;
-using static UnityEngine.GraphicsBuffer;
-using UnityEditor;
-using System.Collections;
 
 namespace ARMG
 {
@@ -31,13 +25,12 @@ namespace ARMG
                 return;
             }
 
-            if (PhotonNetwork.InRoom && GameTableController.instance == null && PhotonNetwork.IsMasterClient)
-            {
-                Debug.Log("We are Instantiating LocalPlayer");
-                // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-                // PhotonNetwork.Instantiate(m_playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
-                PhotonNetwork.Instantiate(m_stationPrefab.name, Vector3.zero, Quaternion.identity, 0);
-            }
+            // if (PhotonNetwork.InRoom && PlayerManager.LocalPlayerInstance == null)
+            // {
+            //     Debug.Log("We are Instantiating LocalPlayer");
+            //     // We're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+            //     PhotonNetwork.Instantiate(m_playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+            // }
         }
 
         #endregion
@@ -81,54 +74,6 @@ namespace ARMG
             PhotonNetwork.LeaveRoom();
         }
 
-
-        public void StartGame()
-        {
-            NextRound();
-        }
-
-
-
-
-        public void NextRound()
-        {
-            Debug.Log("Next Round");
-            GameTableController.instance.GeneratePattern();
-            GameTableController.instance.TriggerPlayPattern();
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        void LoadArena()
-        {
-            if (!PhotonNetwork.IsMasterClient)
-            {
-                Debug.LogError("PhotonNetwork : Trying to Load a level but we are not the master Client");
-                return;
-            }
-            Debug.LogFormat("PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
-            PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
-        }
-
         #endregion
     }
-
-#if UNITY_EDITOR
-    [CustomEditor(typeof(GameManager))]
-    public class GameManagerEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            DrawDefaultInspector();
-
-            GameManager gm = (GameManager)target;
-            if (GUILayout.Button("Start Game"))
-            {
-                gm.StartGame();
-            }
-        }
-    }
-#endif
 }

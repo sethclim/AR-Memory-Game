@@ -42,6 +42,8 @@ MonoBehaviour:
   - UpdateIsOn
   - UpdateLightbulb
   - UpdateLightController
+  - RPC_SwitchPlayerLight
+  - RPC_UpdateLightController
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

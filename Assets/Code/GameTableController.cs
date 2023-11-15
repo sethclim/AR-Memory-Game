@@ -1,74 +1,45 @@
-using Mono.Reflection;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ARMG
 {
     [RequireComponent(typeof(PhotonView))]
     public class GameTableController : MonoBehaviourPunCallbacks
     {
-        public static GameTableController instance;
+        [HideInInspector] public UnityEvent<int, int> OnButtonPressed = new UnityEvent<int, int>();
+        [SerializeField] ButtonController[] m_buttonControllers;
         [SerializeField] LightController[] m_patternLights;
-        [SerializeField] LightController[] m_turnLights;
+        [SerializeField] LightController[] m_playerLights;
         [SerializeField] SpinnerController m_spinnerController;
 
-        readonly List<(int light, int onOff)> m_pattern = new();
-        private IEnumerator m_playPatternRoutine;
-        int prevTurnID = 1;
-
-
-        void Awake()
+        public override void OnEnable()
         {
-            instance = this;
-        }
-
-        public void TriggerPlayPattern()
-        {
-            m_playPatternRoutine = PlayPattern(0.7f);
-            StartCoroutine(m_playPatternRoutine);
-        }
-
-        public void GeneratePattern()
-        {
-            int lightIndex = Random.Range(0, 4);
-
-            (int light, int onOff) instruction = (lightIndex, 1);
-
-            m_pattern.Add(instruction);
-        }
-
-        public void DisplayNextTurn(int nextTurnID)
-        {
-            m_spinnerController.Spin();
-            SendSwitchPlayerLight(prevTurnID, false);
-            SendSwitchPlayerLight(nextTurnID, true);
-            prevTurnID = nextTurnID;
-        }
-
-        private IEnumerator PlayPattern(float waitTime)
-        {
-            int index = 0;
-            while (true)
+            base.OnEnable();
+            for (int i = 0; i < m_buttonControllers.Length; i++)
             {
-                SendSwitchPatternLight(m_pattern[index].light, m_pattern[index].onOff == 1);
-                yield return new WaitForSeconds(0.4f);
-                SendSwitchPatternLight(m_pattern[index].light, false);
-                yield return new WaitForSeconds(waitTime);
+                int controllerIndex = i;
+                m_buttonControllers[i].OnButtonPressed.AddListener(
+                    (lightIndex) => OnButtonPressed.Invoke(controllerIndex, lightIndex));
+            }
+        }
 
-                index++;
-
-                if (index == m_pattern.Count)
-                {
-                    yield break;
-                }
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            for (int i = 0; i < m_buttonControllers.Length; i++)
+            {
+                // Using RemoveAllListeners incase RemoveListener is unable
+                // to properly remove an arrow function
+                m_buttonControllers[i].OnButtonPressed.RemoveAllListeners();
             }
         }
 
         public void SendSwitchPatternLight(int lightBulbIndex, bool onOff)
         {
-            if (lightBulbIndex != -1)
+            if (lightBulbIndex >= 0 && lightBulbIndex < m_patternLights.Length)
             {
                 photonView.RPC(nameof(RPC_UpdateLightController), RpcTarget.AllBuffered, lightBulbIndex, onOff);
             }
@@ -77,12 +48,15 @@ namespace ARMG
         [PunRPC]
         void RPC_UpdateLightController(int lightBulbIndex, bool newValue)
         {
-            m_patternLights[lightBulbIndex].SwitchLight(newValue);
+            if (lightBulbIndex >= 0 && lightBulbIndex < m_patternLights.Length)
+            {
+                m_patternLights[lightBulbIndex].ToggleLight(newValue);
+            }
         }
 
         public void SendSwitchPlayerLight(int lightBulbIndex, bool onOff)
         {
-            if (lightBulbIndex != -1)
+            if (lightBulbIndex >= 0 && lightBulbIndex < m_playerLights.Length)
             {
                 photonView.RPC(nameof(RPC_SwitchPlayerLight), RpcTarget.AllBuffered, lightBulbIndex, onOff);
             }
@@ -91,7 +65,10 @@ namespace ARMG
         [PunRPC]
         void RPC_SwitchPlayerLight(int lightBulbIndex, bool newValue)
         {
-            m_patternLights[lightBulbIndex].SwitchLight(newValue);
+            if (lightBulbIndex >= 0 && lightBulbIndex < m_playerLights.Length)
+            {
+                m_playerLights[lightBulbIndex].ToggleLight(newValue);
+            }
         }
     }
 }
