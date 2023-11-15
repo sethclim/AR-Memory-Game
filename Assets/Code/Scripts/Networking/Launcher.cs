@@ -105,7 +105,7 @@ namespace ARMG.Networking
         public override void OnJoinedRoom()
         {
             Debug.Log("[Client]: Successfully joined room.");
-            PhotonNetwork.LoadLevel("Room for 1");
+            PhotonNetwork.LoadLevel("Main");
         }
 
         #endregion

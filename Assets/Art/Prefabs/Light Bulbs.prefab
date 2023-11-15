@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4254954689736546836}
   m_Layer: 0
-  m_Name: LightBuilbs
+  m_Name: Light Bulbs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4918019549856792961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.000023029745, y: 0.6154837, z: 1.084}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -45,19 +45,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2661117606734765907, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_Name
-      value: lightbulb 4
+      value: Light Bulb 4
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.000023029745
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1664837
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.172
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -107,19 +107,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2661117606734765907, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_Name
-      value: lightbulb 2
+      value: Light Bulb 2
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.000023029745
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1664837
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.194
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -169,19 +169,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2661117606734765907, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_Name
-      value: lightbulb 1
+      value: Light Bulb 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.000023029745
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1664837
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.37405705
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -231,19 +231,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2661117606734765907, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_Name
-      value: lightbulb 3
+      value: Light Bulb 3
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.000023029745
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1664837
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.009
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3433397619521930729, guid: a77d3714bbe35834f9287a1b4b3d922a, type: 3}
       propertyPath: m_LocalRotation.w
