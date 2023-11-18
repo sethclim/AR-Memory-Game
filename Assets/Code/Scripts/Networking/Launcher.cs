@@ -53,7 +53,6 @@ namespace ARMG.Networking
             m_progressLabel.SetActive(false);
             m_controlPanel.SetActive(true);
 
-            Connect();
         }
 
         #endregion
