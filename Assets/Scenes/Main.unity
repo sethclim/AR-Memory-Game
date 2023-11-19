@@ -155,7 +155,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 910eafa7ceebc2b438c473669bc77e50, type: 3}
+  m_audioClip: {fileID: 8300000, guid: abbc8bcdd5a374941b21156c9295f949, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -661,7 +661,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 910eafa7ceebc2b438c473669bc77e50, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 59c56ecb498731741a80fede3c7df0dc, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1280,9 +1280,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4346899562326348108, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4346899562326348108, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 901912484}
+    - target: {fileID: 4346899562326348108, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeBGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 4346899562326348108, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioVolumeControl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4346899562326348108, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1089447420}
+    - target: {fileID: 4346899562326348108, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4560757185439866328, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047572395252153187, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047572395252153187, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 901912484}
+    - target: {fileID: 5047572395252153187, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeBGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047572395252153187, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioVolumeControl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047572395252153187, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1970737521}
+    - target: {fileID: 5047572395252153187, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341264640196788811, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341264640196788811, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 901912484}
+    - target: {fileID: 5341264640196788811, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeBGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341264640196788811, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioVolumeControl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341264640196788811, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 492317841}
+    - target: {fileID: 5341264640196788811, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5701887750257529688, guid: 574454e37981bdf4fa503cb6bd7005a4, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1522,11 +1594,11 @@ SceneRoots:
   m_Roots:
   - {fileID: 1864234276}
   - {fileID: 2662149151400544084}
-  - {fileID: 727431172}
-  - {fileID: 863859038}
-  - {fileID: 1360182463}
-  - {fileID: 663087317}
   - {fileID: 1970737522}
   - {fileID: 492317842}
   - {fileID: 1089447421}
+  - {fileID: 727431172}
+  - {fileID: 663087317}
   - {fileID: 901912485}
+  - {fileID: 863859038}
+  - {fileID: 1360182463}
