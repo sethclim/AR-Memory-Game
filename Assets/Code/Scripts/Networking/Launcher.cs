@@ -2,6 +2,8 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using ARMG;
+using TMPro;
+using UnityEngine.UI;
 
 namespace ARMG.Networking
 {
@@ -109,7 +111,9 @@ namespace ARMG.Networking
             Debug.Log("[Client]: Successfully joined room.");
             PhotonNetwork.LoadLevel("Main");
         }
-
+        public void SetNickName(TMP_InputField obj) {
+            PhotonNetwork.NickName = obj.text;
+        }
         #endregion
     }
 }
