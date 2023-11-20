@@ -21,7 +21,7 @@ namespace ARMG.Networking
         [SerializeField] GameObject m_controlPanel;
         [Tooltip("The UI Label to inform the user that the connection is in progress")]
         [SerializeField] GameObject m_progressLabel;
-
+        
         #endregion
 
         #region Private Fields
@@ -37,7 +37,7 @@ namespace ARMG.Networking
         /// Typically this is used for the OnConnectedToMaster() callback.
         /// </summary>
         bool m_isConnecting;
-
+        string roomName = "";
         #endregion
 
         #region MonoBehaviour Callbacks
@@ -61,14 +61,21 @@ namespace ARMG.Networking
 
         #region Public Methods
 
-        public void Connect()
+        public void Connect(int option)//1:Join random room; 2:Create room
         {
             m_progressLabel.SetActive(true);
             m_controlPanel.SetActive(false);
 
             if (PhotonNetwork.IsConnected)
             {
-                PhotonNetwork.JoinRandomRoom();
+                if (option == 1)
+                {
+                    PhotonNetwork.JoinRandomRoom();
+                }
+                else {
+                    PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = m_maxPlayersPerRoom });
+                }
+                
             }
             else
             {
@@ -113,6 +120,9 @@ namespace ARMG.Networking
         }
         public void SetNickName(TMP_InputField obj) {
             PhotonNetwork.NickName = obj.text;
+        }
+        public void SetRoomName(TMP_InputField obj) {
+            this.roomName = obj.text;
         }
         #endregion
     }
