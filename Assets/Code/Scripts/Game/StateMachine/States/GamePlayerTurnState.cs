@@ -76,20 +76,29 @@ namespace ARMG
             if (buttonIndex == ctx.SimonsPattern[currPatternIndex])
             {
                 currPatternIndex++;
+                // Pattern completed
                 if (currPatternIndex == ctx.SimonsPattern.Count)
                 {
                     Debug.LogFormat("Player #{0} succeeded!", currPlayerTurn + 1);
-                    // TODO: Set all lights to green
+                    // TODO: 
+                    // - Set all lights to green
+                    ctx.PlaySound(0);
                     NextPlayer();
                 }
-
-                ctx.StartCoroutine(PulsePatternLight(buttonIndex));
+                // Pattern in-progress
+                else
+                {
+                    ctx.PlaySound(0);
+                    ctx.StartCoroutine(PulsePatternLight(buttonIndex));
+                }
             }
             // Incorrect button pressed
             else
             {
                 Debug.LogFormat("Player #{0} failed!", currPlayerTurn + 1);
-                // TODO: Set all lights to red
+                // TODO: 
+                // - Set all lights to red
+                ctx.PlaySound(1);
                 ctx.IsPlayerEliminated[playerIndex] = true;
                 NextPlayer();
             }
