@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028353, g: 0.22571383, b: 0.30692253, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -145,6 +145,10 @@ PrefabInstance:
     - target: {fileID: 2914715735074973520, guid: 7afae8aa7fcb75e4a9925c8d7e38f58d, type: 3}
       propertyPath: m_Name
       value: Game Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914715735074973520, guid: 7afae8aa7fcb75e4a9925c8d7e38f58d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3036471141680415148, guid: 7afae8aa7fcb75e4a9925c8d7e38f58d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -472,10 +476,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1246388013680036332, guid: c86e07b3db2818e4ba5b3582cecaecd5, type: 3}
-      propertyPath: PlayerCount
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5412521359089287617, guid: c86e07b3db2818e4ba5b3582cecaecd5, type: 3}
       propertyPath: sceneViewId
       value: 1
