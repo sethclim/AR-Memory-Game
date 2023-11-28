@@ -2804,6 +2804,22 @@ PrefabInstance:
       propertyPath: PlayerCount
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1246388013680036332, guid: c86e07b3db2818e4ba5b3582cecaecd5, type: 3}
+      propertyPath: m_audioClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246388013680036332, guid: c86e07b3db2818e4ba5b3582cecaecd5, type: 3}
+      propertyPath: m_audioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 48c55aae2fa51d343a0465a1a8773795, type: 3}
+    - target: {fileID: 1246388013680036332, guid: c86e07b3db2818e4ba5b3582cecaecd5, type: 3}
+      propertyPath: m_audioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: e924f15e2e49a9a4587818404fd7e0cc, type: 3}
+    - target: {fileID: 1246388013680036332, guid: c86e07b3db2818e4ba5b3582cecaecd5, type: 3}
+      propertyPath: m_audioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: e924f15e2e49a9a4587818404fd7e0cc, type: 3}
     - target: {fileID: 1471957131461067601, guid: c86e07b3db2818e4ba5b3582cecaecd5, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
