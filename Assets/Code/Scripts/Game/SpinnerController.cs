@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -11,11 +10,33 @@ using UnityEditor;
 public class SpinnerController : MonoBehaviour
 {
     [SerializeField] float Duration = 10;
+    [SerializeField] List<Transform> baseLocations = new();
 
-    public void Spin()
+    float EndRotation = 0;
+
+    public void Spin(int index)
     {
+        CalcEndRotation(index);
         StartCoroutine(nameof(Rotate));
     }
+
+    public void SpinLocal(int index)
+    {
+        CalcEndRotation(index);
+        StartCoroutine(nameof(Rotate));
+    }
+
+    Quaternion _lookRotation;
+
+    void CalcEndRotation(int index)
+    {
+        var loc = baseLocations[index].position;
+        var direction = (loc - transform.position).normalized;
+        var lookRot = Quaternion.LookRotation(direction).eulerAngles;
+        _lookRotation.eulerAngles = new Vector3(0, lookRot.y, 0);
+
+        Debug.Log(transform.rotation.eulerAngles + " " + _lookRotation.eulerAngles);
+    }   
 
     IEnumerator Rotate()
     {
@@ -27,10 +48,12 @@ public class SpinnerController : MonoBehaviour
         {
             t += Time.deltaTime;
 
-            float yRotation = Mathf.Lerp(startRotation, endRotation, t / Duration) % 360.0f;
+            //float yRotation = Mathf.Lerp(startRotation, to - startRotation, t / Duration) % 360.0f;
 
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, yRotation,
-            transform.eulerAngles.z);
+            //transform.eulerAngles = new Vector3(transform.eulerAngles.x, yRotation,
+            //transform.eulerAngles.z);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime  / Duration);
 
             yield return null;
         }
@@ -47,7 +70,7 @@ public class SpinnerController : MonoBehaviour
             SpinnerController spinner = (SpinnerController)target;
             if (GUILayout.Button("Spin"))
             {
-                spinner.Spin();
+                spinner.Spin(1);
             }
         }
     }

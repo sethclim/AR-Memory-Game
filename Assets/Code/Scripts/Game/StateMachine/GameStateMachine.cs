@@ -22,6 +22,8 @@ namespace ARMG
         [Header("Game Sounds")]
         [SerializeField] AudioClip[] m_audioClips;
 
+        [SerializeField] public SpinnerController SpinnerController;
+
         public GameTableController GTC { get => m_gtc; }
         public List<int> SimonsPattern { get; } = new();
         public float InitialPatternInterval { get; } = 1.0f; // Seconds
@@ -30,6 +32,7 @@ namespace ARMG
 
         GameTableController m_gtc;
         AudioSource m_audioSource;
+
 
         public void PlaySound(int index)
         {
