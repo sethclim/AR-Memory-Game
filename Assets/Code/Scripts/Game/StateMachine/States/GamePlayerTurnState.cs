@@ -76,6 +76,10 @@ namespace ARMG
             if (buttonIndex == ctx.SimonsPattern[currPatternIndex])
             {
                 currPatternIndex++;
+
+                // Pattern in-progress
+                ctx.StartCoroutine(PulsePatternLight(buttonIndex));
+
                 // Pattern completed
                 if (currPatternIndex == ctx.SimonsPattern.Count)
                 {
@@ -84,12 +88,6 @@ namespace ARMG
                     // - Set all lights to green
                     ctx.PlaySound(0);
                     NextPlayer();
-                }
-                // Pattern in-progress
-                else
-                {
-                    ctx.PlaySound(0);
-                    ctx.StartCoroutine(PulsePatternLight(buttonIndex));
                 }
             }
             // Incorrect button pressed
@@ -111,6 +109,7 @@ namespace ARMG
             ctx.GTC.SendSwitchPatternLight(index, true);
             yield return new WaitForSeconds(waitTime);
             ctx.GTC.SendSwitchPatternLight(index, false);
+            yield return new WaitForSeconds(0.25f);
 
             isProcessingInput = true;
         }
@@ -123,6 +122,7 @@ namespace ARMG
             {
                 if (!ctx.IsPlayerEliminated[i])
                 {
+                    Debug.Log("INSIDE!");
                     ctx.GTC.SendSwitchPlayerLight(currPlayerTurn, false);
                     currPlayerTurn = i;
                     currPatternIndex = 0;

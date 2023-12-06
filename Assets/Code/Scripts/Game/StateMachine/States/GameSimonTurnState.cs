@@ -19,6 +19,12 @@ namespace ARMG
 
             isFinishedPattern = false;
 
+            // Reset player turn lights
+            for (int i = 0; i < 4; i++)
+            {
+                ctx.GTC.SendSwitchPlayerLight(i, false);
+            }
+
             // Generate Pattern
             int lightIndex = Random.Range(0, 4);
             ctx.SimonsPattern.Add(lightIndex);

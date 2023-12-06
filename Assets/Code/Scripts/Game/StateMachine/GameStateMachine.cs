@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ARMG
 {
@@ -50,6 +51,17 @@ namespace ARMG
             States[GameState.GameOver] = new GameOverState(GameState.GameOver, this);
 
             CurrentState = States[GameState.ReadyUp];
+        }
+
+        public override void Start()
+        {
+            base.Start();
+            // In case we started with the wrong scene being active, simply load the menu scene
+            if (!PhotonNetwork.IsConnected)
+            {
+                SceneManager.LoadScene(0);
+                return;
+            }
         }
 
         public override void TransitionToState(GameState statekey)
