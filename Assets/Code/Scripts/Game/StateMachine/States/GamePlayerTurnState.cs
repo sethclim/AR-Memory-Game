@@ -129,7 +129,7 @@ namespace ARMG
                     foundNextPlayer = true;
                     // TODO: Rotate Lazy Susan
 
-                    ctx.SpinnerController.Spin(currPlayerTurn);
+                    ctx.GTC.SendRotateLazySusan(currPlayerTurn);
 
                     Debug.LogFormat("Player #{0} turn!", currPlayerTurn + 1);
                     ctx.GTC.SendSwitchPlayerLight(currPlayerTurn, true);

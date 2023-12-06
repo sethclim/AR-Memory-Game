@@ -81,5 +81,22 @@ namespace ARMG
                 m_playerLights[lightBulbIndex].ToggleLight(newValue);
             }
         }
+
+        public void SendRotateLazySusan(int index)
+        {
+            if (index >= 0 && index < m_playerLights.Length)
+            {
+                photonView.RPC(nameof(RPC_SwitchPlayerLight), RpcTarget.AllBuffered, index);
+            }
+        }
+
+        [PunRPC]
+        void RPC_SendRotateLazySusan(int index)
+        {
+            if (index >= 0 && index < m_playerLights.Length)
+            {
+                m_spinnerController.Spin(index);
+            }
+        }
     }
 }

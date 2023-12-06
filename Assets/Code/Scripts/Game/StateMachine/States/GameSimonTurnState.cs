@@ -29,6 +29,8 @@ namespace ARMG
             int lightIndex = Random.Range(0, 4);
             ctx.SimonsPattern.Add(lightIndex);
 
+            //ctx.SpinnerController.SpinLocal();
+
             // Play Pattern
             ctx.StartCoroutine(PlayPattern(ctx.PatternInterval));
         }
