@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace ARMG
     {
         GameStateMachine ctx;
         bool[] readyFlags;
+        bool gameStarting;
 
         public GameReadyUpState(GameStateMachine.GameState _key, GameStateMachine _ctx) : base(_key)
         {
@@ -18,7 +20,15 @@ namespace ARMG
             Debug.Log("Entered Ready Up State");
 
             readyFlags = new bool[ctx.PlayerCount];
+            gameStarting = false;
             ctx.GTC.OnButtonPressed.AddListener(HandleButtonPress);
+
+            // Reset lights
+            for (int i = 0; i < 4; i++)
+            {
+                ctx.GTC.SendSwitchPatternLight(i, false);
+                ctx.GTC.SendSwitchPlayerLight(i, false);
+            }
         }
 
         public override void ExitState()
@@ -40,7 +50,7 @@ namespace ARMG
 
         public override GameStateMachine.GameState GetNextState()
         {
-            if (readyFlags.All(b => b))
+            if (gameStarting)
             {
                 // Everyone is ready!
                 return GameStateMachine.GameState.SimonTurn;
@@ -57,7 +67,35 @@ namespace ARMG
             {
                 readyFlags[playerIndex] = true;
                 ctx.GTC.SendSwitchPlayerLight(playerIndex, true);
+
+                if (readyFlags.All(b => b))
+                {
+                    ctx.StartCoroutine(StartGame());
+                }
             }
+        }
+
+        float pulseDelay = 0.5f;
+        IEnumerator StartGame()
+        {
+            // Pulse 3 times
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    ctx.GTC.SendSwitchPatternLight(j, true);
+                }
+                yield return new WaitForSeconds(pulseDelay);
+                for (int j = 0; j < 4; j++)
+                {
+                    ctx.GTC.SendSwitchPatternLight(j, false);
+                }
+                yield return new WaitForSeconds(pulseDelay);
+            }
+
+            yield return new WaitForSeconds(pulseDelay);
+
+            gameStarting = true;
         }
     }
 }

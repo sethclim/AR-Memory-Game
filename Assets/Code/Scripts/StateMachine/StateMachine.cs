@@ -12,7 +12,7 @@ public abstract class StateMachine<EState> : MonoBehaviourPunCallbacks where ESt
 
     void Awake() { }
 
-    void Start()
+    public virtual void Start()
     {
         CurrentState.EnterState();
     }
